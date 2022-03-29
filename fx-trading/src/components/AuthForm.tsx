@@ -39,7 +39,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [tempID, setTempID] = useState(null);
 
-  const handleChange = (e:  React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);
     const target = e.target;
     const value = target.value;
@@ -80,7 +80,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
     document.cookie = name + "=" + value + expires;
   };
 
-  const handleLogin = (e: React.FormEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>) => {
+  const handleLogin = (e: React.MouseEvent) => {
     e.preventDefault();
     let url = "http://localhost:8080/api/auth/login";
     let isValid = validateLoginForm();
@@ -158,7 +158,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
     return isValid;
   }
 
-  const handleRegister = (e: React.FormEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>) => {
+  const handleRegister = (e: React.MouseEvent) => {
     e.preventDefault();
     const url = "http://localhost:8080/api/auth/register";
     let isValid = validateRegisterForm();

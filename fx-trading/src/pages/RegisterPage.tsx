@@ -1,27 +1,30 @@
 import {useEffect} from "react";
 import AsideLogo from "../components/AsideLogo";
 import AuthForm from "../components/AuthForm";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {useNavigate} from "react-router-dom";
+
+let username: string;
 
 function RegisterPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let username = getCookie("username");
+         username = getCookie("username");
         if (username) {
-            // toast.error(`🦄 You are already registered!`, {
-            //     position: "top-right",
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // });
+            toast.error(`🦄 You are already registered!`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
 
             navigate("/");
+            console.log('ad')
         }
     }, []);
 
