@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-interface CookiesFunction {
-  decodedCookie: () => void;
-  ca: string;
-    getCookie: (cname: string) => void;  
-}
+// interface CookiesFunction {
+//   decodedCookie: () => void;
+//   ca: string;
+//     getCookie: (cname: string) => void;  
+// }
 
 // const defaultProps: CookiesFunction = {
 //     name: '',
@@ -16,11 +16,15 @@ interface CookiesFunction {
 //     }
 // }
 
-const NotFoundPage: React.FC = ()=>{
-    const getCookie = (cname: any) => {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(";");
+let name: string;
+let decodedCookie: string; 
+let ca:string[];
+
+const NotFoundPage: React.FC = ()=> {
+    const getCookie = (cname: string): string => {
+        name = cname + "=";
+        decodedCookie = decodeURIComponent(document.cookie);
+        ca = decodedCookie.split(";");
         for (let i = 0; i < ca.length; i++) {
           let c = ca[i];
           while (c.charAt(0) === " ") {
