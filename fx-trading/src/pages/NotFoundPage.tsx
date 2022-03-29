@@ -1,9 +1,23 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
+interface CookiesFunction {
+  decodedCookie: () => void;
+  ca: string;
+    getCookie: (cname: string) => void;  
+}
 
-export default function NotFoundPage() {
-    const getCookie = (cname) => {
+// const defaultProps: CookiesFunction = {
+//     name: '',
+//     decodedCookie: () => null,
+//     ca: '',
+//     getCookie: (cname: string): void => {
+//       console.log(cname);
+//     }
+// }
+
+const NotFoundPage: React.FC = ()=>{
+    const getCookie = (cname: any) => {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(";");
@@ -54,3 +68,5 @@ export default function NotFoundPage() {
         </div>
       );
 }
+
+export default NotFoundPage;
