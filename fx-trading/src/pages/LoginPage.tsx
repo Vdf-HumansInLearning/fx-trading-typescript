@@ -4,10 +4,11 @@ import AuthForm from "../components/AuthForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { JsxEmit } from "typescript";
 
 let username: string;
 
-const LoginPage = () => {
+const LoginPage = (): JSX.Element => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const LoginPage = () => {
     }
   }, []);
 
-  function getCookie(cname: string) {
+  function getCookie(cname: string): string {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(";");

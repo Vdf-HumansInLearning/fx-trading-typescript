@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 let username: string;
 
-function RegisterPage() {
+function RegisterPage(): JSX.Element {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function RegisterPage() {
         }
     }, []);
 
-    function getCookie(cname: string) {
+    function getCookie(cname: string) : string {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(";");

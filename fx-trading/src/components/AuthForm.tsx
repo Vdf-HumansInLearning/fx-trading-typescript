@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEventHandler } from 'react';
-import { PropsWithChildren, ReactNode, useState } from "react";
+import React from 'react';
+import {  useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 type Props = { page: string; }
 
-const AuthForm = ({page}: PropsWithChildren<Props>): any => {
+const AuthForm = (props: Props): JSX.Element => {
   const navigate = useNavigate();
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
@@ -44,11 +44,11 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    if (page === "login") {
+    if (props.page === "login") {
       setLoginCredentials((previous) => {
         return { ...previous, [name]: value };
       });
-    } else if (page === "register") {
+    } else if (props.page === "register") {
       setRegisterCredentials((previous) => {
         return { ...previous, [name]: value };
       });
@@ -381,7 +381,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
         console.log(error);
       });
   };
-  if (page === "login") {
+  if (props.page === "login") {
     return (
       <main className="main">
         <div className="main__container">
@@ -445,7 +445,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
         />
       </main >
     );
-  } else if (page === "register") {
+  } else if (props.page === "register") {
     return (
       <main className="main">
         <div className="main__container">
@@ -552,7 +552,7 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
         />
       </main>
     );
-  } else if (page === "twoFact") {
+  } else if (props.page === "twoFact") {
     return (
       <main className="main">
         <div className="main__container">
@@ -602,6 +602,10 @@ const AuthForm = ({page}: PropsWithChildren<Props>): any => {
           </>
         </div>
       </main>
+    )
+  } else {
+    return (
+    <></>
     )
   }
 };
